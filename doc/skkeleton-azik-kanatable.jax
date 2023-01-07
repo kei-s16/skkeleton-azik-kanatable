@@ -21,8 +21,7 @@ TODO				|skkeleton-azik-kanatable-todo|
 *skkeleton-azik-kanatable* は vim-skk/skkeleton にAZIK入力用のkanaTableを追加するプラグインです。
 
 最新版:
-https://github.com/user/skkeleton-azik-kanatable.vim
-
+https://github.com/kei-s16/skkeleton-azik-kanatable
 
 ==============================================================================
 使い方						*skkeleton-azik-kanatable-usage*
