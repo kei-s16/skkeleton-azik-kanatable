@@ -25,9 +25,9 @@ function! skkeleton#azik#add_table(...) abort
   else
     let layout = a:1
 
-    if layout ==? "en"
+    if layout ==? "us"
       call skkeleton#register_kanatable('azik', s:us_layout)
-    elseif layout ==? "ja"
+    elseif layout ==? "jis"
       call skkeleton#register_kanatable('azik', s:jis_layout)
     else
       " 不正な指定があった場合も、英語配列とする
