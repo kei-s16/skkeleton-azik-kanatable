@@ -641,6 +641,7 @@ function! skkeleton#azik#add_table(...) abort
   \ })
 endfunction
 
+" deprecated
 " SKKの機能のマッピングをAZIK用に切り替える
 function! skkeleton#azik#set_keyconfig() abort
   call skkeleton#register_kanatable('azik', {
