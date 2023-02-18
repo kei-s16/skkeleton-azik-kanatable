@@ -1,7 +1,39 @@
+let s:us_layout = {
+\  " ": "henkanFirst",
+\  "^": "henkanPoint",
+\  "<s-l>": "zenkaku",
+\  "'": "katakana",
+\  "/": "abbrev",
+\ }
+
+let s:jis_layout = {
+\  " ": "henkanFirst",
+\  "^": "henkanPoint",
+\  "<s-l>": "zenkaku",
+\  "@": "katakana",
+\  "/": "abbrev",
+\ }
+
 " AZIKテーブルにマッピングを追加する
-function! skkeleton#azik#add_table() abort
+function! skkeleton#azik#add_table(...) abort
   " AZIKテーブルを作成する
   call skkeleton#register_kanatable('azik', {}, 1)
+
+  if a:0 == 0
+    " 互換性維持のため、指定がなければ英語配列をデフォルトに設定する
+    call skkeleton#register_kanatable('azik', s:us_layout)
+  else
+    let layout = a:1
+
+    if layout ==? "us"
+      call skkeleton#register_kanatable('azik', s:us_layout)
+    elseif layout ==? "jis"
+      call skkeleton#register_kanatable('azik', s:jis_layout)
+    else
+      " 不正な指定があった場合も、英語配列とする
+      call skkeleton#register_kanatable('azik', s:us_layout)
+    endif
+  endif
 
   " テーブルにマッピングを追加する
   " 記号
@@ -601,6 +633,7 @@ function! skkeleton#azik#add_table() abort
   \ })
 endfunction
 
+" deprecated
 " SKKの機能のマッピングをAZIK用に切り替える
 function! skkeleton#azik#set_keyconfig() abort
   call skkeleton#register_kanatable('azik', {

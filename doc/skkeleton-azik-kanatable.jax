@@ -1,6 +1,6 @@
 *skkeleton-azik-kanatable.txt*	日本語ヘルプ
 
-Version : 0.1
+Version : 0.2
 Author  : kei-s16
 License : zlib
 
@@ -9,7 +9,6 @@ License : zlib
 
 概要				|skkeleton-azik-kanatable-introduction|
 使い方				|skkeleton-azik-kanatable-usage|
-インターフェイス		|skkeleton-azik-kanatable-interface|
   関数				  |skkeleton-azik-kanatable-functions|
 TODO				|skkeleton-azik-kanatable-todo|
 更新履歴			|skkeleton-azik-kanatable-changelog|
@@ -26,34 +25,33 @@ https://github.com/kei-s16/skkeleton-azik-kanatable
 ==============================================================================
 使い方						*skkeleton-azik-kanatable-usage*
 
-vimscriptでは下記のように記述します。
-
-call skkeleton#azik#add_table()
+vimscriptでは下記のように記述します。>
+call skkeleton#azik#add_table('us')
 call skkeleton#config({'kanatable' = 'azik',})
 
-luaでは下記のように記述します。
-
-vim.fn['skkeleton#azik#add_table']()
+luaでは下記のように記述します。>
+vim.fn['skkeleton#azik#add_table']('us')
 vim.fn['skkeleton#config']{
   kanaTable = 'azik'
 }
 
-カタカナや全角英数、abbrevなどのマッピングは skkeleton#azik#add_table() では提
-供されません。skkeleton#register_kanatable を使ってマッピングを行ってください。
-skkeleton#azik#set_keyconfig を呼び出すことでUS配列向けのマッピングを追加することもできます。
-
 ==============================================================================
-インターフェイス				*skkeleton-azik-kanatable-interface*
-
 ------------------------------------------------------------------------------
 関数						*skkeleton-azik-kanatable-functions*
 
-skkeleton#azik#add_table()			*skkeleton#azik#add_table()*
+skkeleton#azik#add_table({layout})			*skkeleton#azik#add_table()*
 AZIKテーブルを追加します。
+{layout}を指定した場合、指定した配列に合わせたデフォルト設定を提供します。指定
+がなかった場合は、US配列が指定されます。
+
+{layout}には以下のものが指定できます:
+	us
+	jis
 
 
 skkeleton#azik#set_keyconfig()		*skkeleton#azik#set_keyconfig()*
-モード切り替えなどのマッピングを追加します。
+この関数は廃止予定です。
+US配列向けに、モード切り替えなどのマッピングを追加します。
 
 
 ==============================================================================
@@ -64,6 +62,12 @@ TODO						*skkeleton-azik-kanatable-todo*
 ==============================================================================
 更新履歴					*skkeleton-azik-kanatable-changelog*
 
+2023-02-19
+- JIS配列むけのデフォルト設定を追加
+- 合わせて、add_tableで配列を選択できるように変更
+
+2023-01-07
+- 初回リリース
 
 ==============================================================================
 vim:tw=78:ts=8:ft=help:norl:noet:fen:
