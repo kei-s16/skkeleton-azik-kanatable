@@ -24,8 +24,6 @@ on_source = 'skkeleton'
 以下にluaでの設定を例示します。
 
 ```lua
-local opts = {}
-
 vim.fn['skkeleton#azik#add_table']('us')
 
 vim.fn['skkeleton#config']{
@@ -37,6 +35,8 @@ vim.fn['skkeleton#config']{
 以下にluaでの設定を例示します。
 
 ```lua
+local opts = {}
+
 vim.api.nvim_set_keymap('i', '<C-j>', '<Plug>(skkeleton-enable)', opts)
 vim.api.nvim_set_keymap('c', '<C-j>', '<Plug>(skkeleton-enable)', opts)
 -- AZIKテーブルに disable のマッピングを定義していないので、設定側で登録する必要があります
